@@ -13,8 +13,17 @@
 #ifndef BOOST_NONE_T_17SEP2003_HPP
 #define BOOST_NONE_T_17SEP2003_HPP
 
+#if defined(BOOST_USE_MODULES) && !defined(BOOST_OPTIONAL_INTERFACE_UNIT)
+
+#ifndef BOOST_IN_MODULE_PURVIEW
+import boost.optional;
+#endif
+
+#else
+
 #include <boost/config.hpp>
 #include <boost/config/pragma_message.hpp>
+#include "boost/optional/detail/config.hpp"
 
 #if defined (BOOST_NO_CXX11_RVALUE_REFERENCES) || defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) \
 || defined(BOOST_NO_CXX11_LAMBDAS) || defined(BOOST_NO_CXX11_DECLTYPE_N3276)  \
@@ -56,5 +65,7 @@ struct none_t
 #endif // old implementation workarounds
 
 } // namespace boost
+
+#endif // BOOST_USE_MODULES
 
 #endif // header guard

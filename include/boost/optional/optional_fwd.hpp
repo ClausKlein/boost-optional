@@ -16,6 +16,15 @@
 #ifndef BOOST_OPTIONAL_OPTIONAL_FWD_FLC_19NOV2002_HPP
 #define BOOST_OPTIONAL_OPTIONAL_FWD_FLC_19NOV2002_HPP
 
+#if defined(BOOST_USE_MODULES) && !defined(BOOST_OPTIONAL_INTERFACE_UNIT)
+
+#ifndef BOOST_IN_MODULE_PURVIEW
+import boost.optional;
+#endif
+
+#else
+
+#include "boost/optional/detail/config.hpp"
 #include <boost/config.hpp>
 #include <boost/core/invoke_swap.hpp>
 #include <boost/optional/detail/optional_select_implementation.hpp>
@@ -24,18 +33,20 @@
 
 namespace boost {
 
-template<class T> class optional ;
+BOOST_OPTIONAL_MODULE_EXPORT template<class T> class optional ;
 
 // This forward is needed to refer to namespace scope swap from the member swap
 #ifdef BOOST_OPTIONAL_USES_UNION_IMPLEMENTATION
+  BOOST_OPTIONAL_MODULE_EXPORT
   template<class T> BOOST_OPTIONAL_CXX20_CONSTEXPR void swap ( optional<T>& lhs, optional<T>& rhs )
     noexcept(::std::is_nothrow_move_constructible<T>::value && noexcept(boost::core::invoke_swap(*lhs, *rhs)));
 #else
+  BOOST_OPTIONAL_MODULE_EXPORT
   template<class T> void swap ( optional<T>& , optional<T>& ) ;
 #endif // BOOST_OPTIONAL_USES_UNION_IMPLEMENTATION
 
 
-template<class T> struct optional_swap_should_use_default_constructor ;
+BOOST_OPTIONAL_MODULE_EXPORT template<class T> struct optional_swap_should_use_default_constructor ;
 
 
 #ifndef BOOST_OPTIONAL_CONFIG_DONT_SPECIALIZE_OPTIONAL_REFS
@@ -47,5 +58,7 @@ template<class T> struct optional_swap_should_use_default_constructor ;
 #endif
 
 } // namespace boost
+
+#endif // BOOST_USE_MODULES
 
 #endif

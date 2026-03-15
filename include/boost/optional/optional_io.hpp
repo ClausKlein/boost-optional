@@ -12,17 +12,27 @@
 #ifndef BOOST_OPTIONAL_OPTIONAL_IO_FLC_19NOV2002_HPP
 #define BOOST_OPTIONAL_OPTIONAL_IO_FLC_19NOV2002_HPP
 
+#if defined(BOOST_USE_MODULES) && !defined(BOOST_OPTIONAL_INTERFACE_UNIT)
+
+#ifndef BOOST_IN_MODULE_PURVIEW
+import boost.optional;
+#endif
+
+#else
+
 #ifndef BOOST_NO_IOSTREAM
-#include <istream>
-#include <ostream>
+#include <boost/config/std/istream.hpp>
+#include <boost/config/std/ostream.hpp>
 
 #include "boost/none.hpp"
 #include "boost/optional/optional.hpp"
+#include "boost/optional/detail/config.hpp"
 
 
 namespace boost
 {
 
+BOOST_OPTIONAL_MODULE_EXPORT 
 template<class CharType, class CharTrait>
 inline
 std::basic_ostream<CharType, CharTrait>&
@@ -36,6 +46,7 @@ operator<<(std::basic_ostream<CharType, CharTrait>& out, none_t)
   return out;
 }
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class CharType, class CharTrait, class T>
 inline
 std::basic_ostream<CharType, CharTrait>&
@@ -51,6 +62,7 @@ operator<<(std::basic_ostream<CharType, CharTrait>& out, optional<T> const& v)
   return out;
 }
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class CharType, class CharTrait, class T>
 inline
 std::basic_istream<CharType, CharTrait>&
@@ -88,4 +100,6 @@ operator>>(std::basic_istream<CharType, CharTrait>& in, optional<T>& v)
 } // namespace boost
 
 #endif // BOOST_NO_IOSTREAM
+
+#endif // BOOST_USE_MODULES
 #endif

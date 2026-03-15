@@ -13,6 +13,8 @@
 #ifndef BOOST_OPTIONAL_DETAIL_OPTIONAL_RELOPS_AJK_03OCT2015_HPP
 #define BOOST_OPTIONAL_DETAIL_OPTIONAL_RELOPS_AJK_03OCT2015_HPP
 
+#include "boost/optional/detail/config.hpp"
+
 namespace boost {
 
 // optional's relational operators ( ==, !=, <, >, <=, >= ) have deep-semantics (compare values).
@@ -24,31 +26,37 @@ namespace boost {
 // optional<T> vs optional<T> cases
 //
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CONSTEXPR
 bool operator == ( optional<T> const& x, optional<T> const& y )
 { return bool(x) && bool(y) ? *x == *y : bool(x) == bool(y); }
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CONSTEXPR
 bool operator < ( optional<T> const& x, optional<T> const& y )
 { return !y ? false : (!x ? true : (*x) < (*y)); }
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CONSTEXPR
 bool operator != ( optional<T> const& x, optional<T> const& y )
 { return !( x == y ) ; }
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CONSTEXPR
 bool operator > ( optional<T> const& x, optional<T> const& y )
 { return y < x ; }
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CONSTEXPR
 bool operator <= ( optional<T> const& x, optional<T> const& y )
 { return !( y < x ) ; }
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CONSTEXPR
 bool operator >= ( optional<T> const& x, optional<T> const& y )
@@ -58,31 +66,37 @@ bool operator >= ( optional<T> const& x, optional<T> const& y )
 //
 // optional<T> vs T cases
 //
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CONSTEXPR
 bool operator == ( optional<T> const& x, T const& y )
 { return x && (*x == y); }
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CONSTEXPR
 bool operator < ( optional<T> const& x, T const& y )
 { return (!x) || (*x < y); }
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CONSTEXPR
 bool operator != ( optional<T> const& x, T const& y )
 { return !( x == y ) ; }
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CONSTEXPR
 bool operator > ( optional<T> const& x, T const& y )
 { return y < x ; }
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CONSTEXPR
 bool operator <= ( optional<T> const& x, T const& y )
 { return !( y < x ) ; }
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CONSTEXPR
 bool operator >= ( optional<T> const& x, T const& y )
@@ -92,31 +106,37 @@ bool operator >= ( optional<T> const& x, T const& y )
 // T vs optional<T> cases
 //
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CONSTEXPR
 bool operator == ( T const& x, optional<T> const& y )
 { return y && (x == *y); }
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CONSTEXPR
 bool operator < ( T const& x, optional<T> const& y )
 { return y && (x < *y); }
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CONSTEXPR
 bool operator != ( T const& x, optional<T> const& y )
 { return !( x == y ) ; }
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CONSTEXPR
 bool operator > ( T const& x, optional<T> const& y )
 { return y < x ; }
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CONSTEXPR
 bool operator <= ( T const& x, optional<T> const& y )
 { return !( y < x ) ; }
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CONSTEXPR
 bool operator >= ( T const& x, optional<T> const& y )
@@ -127,31 +147,37 @@ bool operator >= ( T const& x, optional<T> const& y )
 // optional<T> vs none cases
 //
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CONSTEXPR
 bool operator == ( optional<T> const& x, none_t ) BOOST_NOEXCEPT
 { return !x; }
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CONSTEXPR
 bool operator < ( optional<T> const&, none_t ) BOOST_NOEXCEPT
 { return false; }
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CONSTEXPR
 bool operator != ( optional<T> const& x, none_t ) BOOST_NOEXCEPT
 { return bool(x); }
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CONSTEXPR
 bool operator > ( optional<T> const& x, none_t y ) BOOST_NOEXCEPT
 { return y < x ; }
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CONSTEXPR
 bool operator <= ( optional<T> const& x, none_t y ) BOOST_NOEXCEPT
 { return !( y < x ) ; }
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CONSTEXPR
 bool operator >= ( optional<T> const& x, none_t y ) BOOST_NOEXCEPT
@@ -161,31 +187,37 @@ bool operator >= ( optional<T> const& x, none_t y ) BOOST_NOEXCEPT
 // none vs optional<T> cases
 //
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CONSTEXPR
 bool operator == ( none_t , optional<T> const& y ) BOOST_NOEXCEPT
 { return !y; }
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CONSTEXPR
 bool operator < ( none_t , optional<T> const& y ) BOOST_NOEXCEPT
 { return bool(y); }
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CONSTEXPR
 bool operator != ( none_t, optional<T> const& y ) BOOST_NOEXCEPT
 { return bool(y); }
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CONSTEXPR
 bool operator > ( none_t x, optional<T> const& y ) BOOST_NOEXCEPT
 { return y < x ; }
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CONSTEXPR
 bool operator <= ( none_t x, optional<T> const& y ) BOOST_NOEXCEPT
 { return !( y < x ) ; }
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CONSTEXPR
 bool operator >= ( none_t x, optional<T> const& y ) BOOST_NOEXCEPT

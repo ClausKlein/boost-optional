@@ -609,6 +609,7 @@ struct optional_uses_direct_storage_for
 #  define BOOST_OPTIONAL_BASE_TYPE(T) optional_detail::optional_base<T>
 #endif
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 class optional
   : public BOOST_OPTIONAL_BASE_TYPE(T)
@@ -1044,5 +1045,7 @@ namespace boost {
 #include <boost/optional/detail/optional_relops.hpp>
 #include <boost/optional/detail/optional_nonmember_interface.hpp>
 
+
+#endif // BOOST_USE_MODULES
 
 #endif // header guard

@@ -12,9 +12,18 @@
 #ifndef BOOST_BAD_OPTIONAL_ACCESS_22MAY2014_HPP
 #define BOOST_BAD_OPTIONAL_ACCESS_22MAY2014_HPP
 
-#include <stdexcept>
+#if defined(BOOST_USE_MODULES) && !defined(BOOST_OPTIONAL_INTERFACE_UNIT)
+
+#ifndef BOOST_IN_MODULE_PURVIEW
+import boost.optional;
+#endif
+
+#else
+
+#include "boost/optional/detail/config.hpp"
+#include <boost/config/std/stdexcept.hpp>
 #if __cplusplus < 201103L
-#include <string> // to make converting-ctor std::string(char const*) visible
+#include <boost/config/std/string.hpp> // to make converting-ctor std::string(char const*) visible
 #endif
 
 namespace boost {
@@ -24,10 +33,11 @@ namespace boost {
 # pragma clang diagnostic ignored "-Wweak-vtables"
 #endif
 
+BOOST_OPTIONAL_MODULE_EXPORT
 class bad_optional_access : public std::logic_error
 {
 public:
-  bad_optional_access()
+  inline bad_optional_access()
     : std::logic_error("Attempted to access the value of an uninitialized optional object.")
     {}
 };
@@ -37,5 +47,7 @@ public:
 #endif
 
 } // namespace boost
+
+#endif // BOOST_USE_MODULES
 
 #endif

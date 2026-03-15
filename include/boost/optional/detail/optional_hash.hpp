@@ -17,7 +17,7 @@
 
 #if !defined(BOOST_OPTIONAL_CONFIG_DO_NOT_SPECIALIZE_STD_HASH) && !defined(BOOST_NO_CXX11_HDR_FUNCTIONAL)
 
-#include <functional>
+#include <boost/config/std/functional.hpp>
 
 namespace std
 {

@@ -7,24 +7,39 @@ cmake_minimum_required(VERSION 3.5...3.20)
 
 project(boost_optional VERSION "${BOOST_SUPERPROJECT_VERSION}" LANGUAGES CXX)
 
+
+if (BOOST_USE_MODULES)
+  add_library(boost_optional STATIC)
+  target_sources(boost_optional PUBLIC FILE_SET CXX_MODULES BASE_DIRS modules FILES modules/boost_optional.cppm)
+  set(__scope PUBLIC)
+  
+  # Enable and propagate C++23, import std, and the modules macro
+  target_compile_features(boost_optional PUBLIC cxx_std_23)
+  set_target_properties(boost_optional PROPERTIES CXX_MODULE_STD 1)
+  target_compile_definitions(boost_optional PUBLIC BOOST_USE_MODULES)
+
+else()
 add_library(boost_optional INTERFACE)
+  target_compile_features(boost_optional INTERFACE cxx_std_11)
+  set(__scope INTERFACE)
+endif()
+
 add_library(Boost::optional ALIAS boost_optional)
 
-target_include_directories(boost_optional INTERFACE include)
+target_include_directories(boost_optional ${__scope} include)
 if(NOT CMAKE_VERSION VERSION_LESS "3.19")
   file(GLOB_RECURSE headers include/*.hpp)
   target_sources(boost_optional PRIVATE ${headers})
 endif()
 
 target_link_libraries(boost_optional
-  INTERFACE
+  ${__scope}
     Boost::assert
     Boost::config
     Boost::core
     Boost::throw_exception
     Boost::type_traits
 )
-target_compile_features(boost_optional INTERFACE cxx_std_11)
 
 if(BUILD_TESTING AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/test/CMakeLists.txt")
 

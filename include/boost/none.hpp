@@ -13,8 +13,17 @@
 #ifndef BOOST_NONE_17SEP2003_HPP
 #define BOOST_NONE_17SEP2003_HPP
 
+#if defined(BOOST_USE_MODULES) && !defined(BOOST_OPTIONAL_INTERFACE_UNIT)
+
+#ifndef BOOST_IN_MODULE_PURVIEW
+import boost.optional;
+#endif
+
+#else
+
 #include "boost/config.hpp"
 #include "boost/none_t.hpp"
+#include "boost/optional/detail/config.hpp"
 
 // NOTE: Borland users have to include this header outside any precompiled headers
 // (bcc<=5.64 cannot include instance data in a precompiled header)
@@ -55,5 +64,7 @@ BOOST_INLINE_CONSTEXPR none_t none ((none_t::init_tag()));
 #endif // older definitions
 
 } // namespace boost
+
+#endif // BOOST_USE_MODULES
 
 #endif // header guard

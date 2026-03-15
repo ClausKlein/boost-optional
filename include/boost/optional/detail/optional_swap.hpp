@@ -103,6 +103,7 @@ struct optional_swap_should_use_default_constructor : has_nothrow_default_constr
 
 #endif
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template <class T>
 inline void swap ( optional<T>& x, optional<T>& y )
 //BOOST_NOEXCEPT_IF(::boost::is_nothrow_move_constructible<T>::value && BOOST_NOEXCEPT_EXPR(boost::core::invoke_swap(*x, *y)))
