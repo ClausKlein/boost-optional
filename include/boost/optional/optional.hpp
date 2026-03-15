@@ -22,13 +22,20 @@
 #ifndef BOOST_OPTIONAL_OPTIONAL_FLC_19NOV2002_HPP
 #define BOOST_OPTIONAL_OPTIONAL_FLC_19NOV2002_HPP
 
+#if defined(BOOST_USE_MODULES) && !defined(BOOST_OPTIONAL_INTERFACE_UNIT)
+
+#ifndef BOOST_IN_MODULE_PURVIEW
+import boost.optional;
+#endif
+
+#else
 
 #include <boost/optional/detail/optional_select_implementation.hpp>
 #include <boost/optional/detail/optional_common_defs.hpp>
 
 
 #ifndef BOOST_NO_IOSTREAM
-#include <iosfwd>
+#include <boost/config/std/iosfwd.hpp>
 
 namespace boost {
 
@@ -53,7 +60,7 @@ operator<<(std::basic_ostream<CharType, CharTrait>& os, optional_detail::optiona
 #else
 
 
-#include <new>
+#include <boost/config/std/new.hpp>
 
 
 #include <boost/assert.hpp>

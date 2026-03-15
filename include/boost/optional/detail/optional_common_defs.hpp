@@ -21,7 +21,7 @@
 
 #include <boost/config.hpp>
 #include <boost/core/addressof.hpp>
-#include <type_traits>
+#include <boost/config/std/type_traits.hpp>
 #include <boost/optional/detail/optional_factory_support.hpp>
 
 #ifndef BOOST_OPTIONAL_USES_UNION_IMPLEMENTATION

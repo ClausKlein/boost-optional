@@ -28,7 +28,7 @@ import boost.optional;
 #include <boost/config.hpp>
 #include <boost/core/invoke_swap.hpp>
 #include <boost/optional/detail/optional_select_implementation.hpp>
-#include <type_traits>
+#include <boost/config/std/type_traits.hpp>
 
 
 namespace boost {
