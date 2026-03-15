@@ -9,6 +9,12 @@
 // You are welcome to contact the author at:
 //  akrzemi1@gmail.com
 
+#ifdef BOOST_USE_MODULES
+
+#error "This test does not make sense with modules"
+
+#else
+
 #include <boost/config/std/iostream.hpp>
 #include "boost/optional.hpp"
 // but no boost/optional/optional_io.hpp
@@ -22,3 +28,5 @@ void test_streaming_out_optional()
   boost::optional<int> opt;
   std::cout << opt;
 }
+
+#endif

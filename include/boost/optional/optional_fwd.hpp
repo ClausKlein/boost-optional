@@ -53,7 +53,7 @@ BOOST_OPTIONAL_MODULE_EXPORT template<class T> struct optional_swap_should_use_d
 
   template<class T> class optional<T&> ;
 
-  template<class T> BOOST_CXX14_CONSTEXPR void swap ( optional<T&>& , optional<T&>& ) BOOST_NOEXCEPT;
+  BOOST_OPTIONAL_MODULE_EXPORT template<class T> BOOST_CXX14_CONSTEXPR void swap ( optional<T&>& , optional<T&>& ) BOOST_NOEXCEPT;
 
 #endif
 

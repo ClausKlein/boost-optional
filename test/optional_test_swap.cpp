@@ -353,14 +353,14 @@ void test_swap_member_function( T const* )
 void test_swap_tweaking()
 {
   ( test_swap_function( ARG(optional_swap_test::class_without_default_ctor) ) );
-#ifndef BOOST_OPTIONAL_USES_UNION_IMPLEMENTATION
+#if !defined(BOOST_OPTIONAL_USES_UNION_IMPLEMENTATION) && !defined(BOOST_USE_MODULES)
   ( test_swap_function( ARG(optional_swap_test::class_whose_explicit_ctor_should_be_used) ) );
   ( test_swap_function( ARG(optional_swap_test::class_whose_default_ctor_should_be_used) ) );
   ( test_swap_function( ARG(optional_swap_test::class_whose_default_ctor_should_not_be_used) ) );
   ( test_swap_function( ARG(optional_swap_test::template_whose_default_ctor_should_be_used<char>) ) );
 #endif
   ( test_swap_member_function( ARG(optional_swap_test::class_without_default_ctor) ) );
-#ifndef BOOST_OPTIONAL_USES_UNION_IMPLEMENTATION
+#if !defined(BOOST_OPTIONAL_USES_UNION_IMPLEMENTATION) && !defined(BOOST_USE_MODULES)
   ( test_swap_member_function( ARG(optional_swap_test::class_whose_explicit_ctor_should_be_used) ) );
   ( test_swap_member_function( ARG(optional_swap_test::class_whose_default_ctor_should_be_used) ) );
   ( test_swap_member_function( ARG(optional_swap_test::class_whose_default_ctor_should_not_be_used) ) );
