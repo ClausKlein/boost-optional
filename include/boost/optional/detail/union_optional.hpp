@@ -211,7 +211,7 @@ using guarded_storage = typename ::std::conditional<
 
 namespace boost {
 
-  template <class T>
+  BOOST_OPTIONAL_MODULE_EXPORT template <class T>
   class optional : public optional_detail::optional_tag
   {
     using storage_t = optional_detail::guarded_storage<T>;
@@ -708,7 +708,7 @@ namespace boost {
 
   };
 
-  template <typename T>
+  BOOST_OPTIONAL_MODULE_EXPORT template <typename T>
   BOOST_OPTIONAL_CXX20_CONSTEXPR
   void swap(optional<T>& lhs, optional<T>& rhs)
     noexcept(::std::is_nothrow_move_constructible<T>::value && noexcept(boost::core::invoke_swap(*lhs, *rhs)))

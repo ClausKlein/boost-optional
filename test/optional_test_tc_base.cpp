@@ -25,7 +25,7 @@ int main()
 
 #else
 
-#include <utility>
+#include <boost/config/std/utility.hpp>
 
 struct NotDefaultConstructible
 {

@@ -23,6 +23,7 @@
 #include <boost/core/addressof.hpp>
 #include <boost/config/std/type_traits.hpp>
 #include <boost/optional/detail/optional_factory_support.hpp>
+#include <boost/optional/detail/config.hpp>
 
 #ifndef BOOST_OPTIONAL_USES_UNION_IMPLEMENTATION
 #include <boost/type_traits/decay.hpp>
@@ -47,13 +48,15 @@
 
 namespace boost {
 
-template <typename T> class optional;
+BOOST_OPTIONAL_MODULE_EXPORT template <typename T> class optional;
 
 
 // Boost-wide tags for recognizing "factories": a C++03 workaround
 // for perfect forwarding.
+extern "C++" {
 class in_place_factory_base;
 class typed_in_place_factory_base;
+}
 
 } // namespace boost
 
@@ -160,27 +163,27 @@ namespace boost {
 namespace optional_ns {
 
 /// a tag for in-place initialization of contained value
-struct in_place_init_t
+BOOST_OPTIONAL_MODULE_EXPORT struct in_place_init_t
 {
   struct init_tag{};
   BOOST_CONSTEXPR explicit in_place_init_t(init_tag){}
 };
-BOOST_INLINE_CONSTEXPR in_place_init_t in_place_init ((in_place_init_t::init_tag()));
+BOOST_OPTIONAL_MODULE_EXPORT BOOST_INLINE_CONSTEXPR in_place_init_t in_place_init ((in_place_init_t::init_tag()));
 
 /// a tag for conditional in-place initialization of contained value
-struct in_place_init_if_t
+BOOST_OPTIONAL_MODULE_EXPORT struct in_place_init_if_t
 {
   struct init_tag{};
   BOOST_CONSTEXPR explicit in_place_init_if_t(init_tag){}
 };
-BOOST_INLINE_CONSTEXPR in_place_init_if_t in_place_init_if ((in_place_init_if_t::init_tag()));
+BOOST_OPTIONAL_MODULE_EXPORT BOOST_INLINE_CONSTEXPR in_place_init_if_t in_place_init_if ((in_place_init_if_t::init_tag()));
 
 } // namespace optional_ns
 
-using optional_ns::in_place_init_t;
-using optional_ns::in_place_init;
-using optional_ns::in_place_init_if_t;
-using optional_ns::in_place_init_if;
+BOOST_OPTIONAL_MODULE_EXPORT using optional_ns::in_place_init_t;
+BOOST_OPTIONAL_MODULE_EXPORT using optional_ns::in_place_init;
+BOOST_OPTIONAL_MODULE_EXPORT using optional_ns::in_place_init_if_t;
+BOOST_OPTIONAL_MODULE_EXPORT using optional_ns::in_place_init_if;
 
 } // namespace boost
 

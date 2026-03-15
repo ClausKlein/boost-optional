@@ -12,7 +12,7 @@
 #include "boost/core/lightweight_test.hpp"
 #include "boost/optional/detail/optional_config.hpp"
 //#include "boost/predef.h"
-#include <string>
+#include <boost/config/std/string.hpp>
 
 int main()
 {

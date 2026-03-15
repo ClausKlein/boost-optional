@@ -15,7 +15,7 @@
 #pragma hdrstop
 #endif
 
-#include <string>
+#include <boost/config/std/string.hpp>
 #include "boost/core/addressof.hpp"
 #include "boost/core/lightweight_test.hpp"
 

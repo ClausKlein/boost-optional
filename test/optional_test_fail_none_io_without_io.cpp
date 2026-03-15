@@ -9,7 +9,7 @@
 // You are welcome to contact the author at:
 //  akrzemi1@gmail.com
 
-#include <iostream>
+#include <boost/config/std/iostream.hpp>
 #include "boost/none.hpp"
 // but no boost/optional/optional_io.hpp
 

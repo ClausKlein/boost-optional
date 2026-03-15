@@ -13,10 +13,10 @@
 // 12 May 2008 (added more swap tests)
 //
 #ifndef BOOST_NO_IOSTREAM
-#include<iostream>
+#include<boost/config/std/iostream.hpp>
 #endif // BOOST_NO_IOSTREAM
-#include<stdexcept>
-#include<string>
+#include<boost/config/std/stdexcept.hpp>
+#include<boost/config/std/string.hpp>
 
 #define BOOST_ENABLE_ASSERT_HANDLER
 

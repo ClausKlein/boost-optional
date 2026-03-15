@@ -13,4 +13,9 @@ import boost.type_traits;
 #define BOOST_OPTIONAL_INTERFACE_UNIT
 #define BOOST_IN_MODULE_PURVIEW
 
-#include <boost/optional.hpp>
+#include <boost/none_t.hpp>
+#include <boost/none.hpp>
+#include <boost/optional/bad_optional_access.hpp>
+#include <boost/optional/optional_io.hpp>
+#include <boost/optional/optional.hpp>
+#include <boost/optional/detail/optional_factory_support.hpp>

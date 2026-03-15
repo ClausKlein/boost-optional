@@ -10,7 +10,7 @@
 // You are welcome to contact the author at:
 //  fernando_cacciola@hotmail.com
 
-#include<string>
+#include<boost/config/std/string.hpp>
 #include "boost/optional/optional.hpp"
 
 #ifdef BOOST_BORLANDC

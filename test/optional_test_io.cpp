@@ -16,7 +16,7 @@
 
 #ifndef BOOST_NO_IOSTREAM
 
-#include <sstream>
+#include <boost/config/std/sstream.hpp>
 
 #ifdef BOOST_BORLANDC
 #pragma hdrstop

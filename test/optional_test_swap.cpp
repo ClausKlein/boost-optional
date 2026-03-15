@@ -23,9 +23,9 @@
 #include "boost/core/lightweight_test.hpp"
 
 #if __cplusplus < 201103L
-#include <algorithm>
+#include <boost/config/std/algorithm.hpp>
 #else
-#include <utility>
+#include <boost/config/std/utility.hpp>
 #endif
 
 using boost::optional;
@@ -210,7 +210,7 @@ namespace boost {
 // Compile time tweaking on whether or not swap should use the default constructor:
 //
 
-#ifndef BOOST_OPTIONAL_USES_UNION_IMPLEMENTATION
+#if !defined(BOOST_OPTIONAL_USES_UNION_IMPLEMENTATION) && !defined(BOOST_USE_MODULES)
 template <> struct optional_swap_should_use_default_constructor<
   optional_swap_test::class_whose_default_ctor_should_be_used> : true_type {} ;
 

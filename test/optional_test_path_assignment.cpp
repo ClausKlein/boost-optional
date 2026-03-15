@@ -9,6 +9,7 @@
 // You are welcome to contact the author at:
 //  akrzemi1@gmail.com
 
+#include <boost/config.hpp>
 #include "boost/optional/optional.hpp"
 
 #include "boost/core/enable_if.hpp"

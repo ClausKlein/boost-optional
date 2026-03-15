@@ -15,7 +15,7 @@
 
 #if !defined(BOOST_NO_CXX11_HDR_UNORDERED_SET) && !defined(BOOST_OPTIONAL_CONFIG_DO_NOT_SPECIALIZE_STD_HASH)
 
-#include <unordered_set>
+#include <boost/config/std/unordered_set.hpp>
 
 void test_unordered_map()
 {

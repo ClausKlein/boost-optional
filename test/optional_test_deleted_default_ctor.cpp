@@ -17,7 +17,7 @@ int main()
 #else
 
 #include <boost/optional.hpp>
-#include <utility>
+#include <boost/config/std/utility.hpp>
 
 class basic_multi_buffer;
 

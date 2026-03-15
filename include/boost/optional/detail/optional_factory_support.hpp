@@ -14,13 +14,15 @@
 #ifndef BOOST_OPTIONAL_OPTIONAL_DETAIL_OPTIONAL_FACTORY_SUPPORT_AJK_12FEB2016_HPP
 #define BOOST_OPTIONAL_OPTIONAL_DETAIL_OPTIONAL_FACTORY_SUPPORT_AJK_12FEB2016_HPP
 
+#include <boost/optional/detail/config.hpp>
+
 // Daniel Wallin discovered that bind/apply.hpp badly interacts with the apply<>
 // member template of a factory as used in the optional<> implementation.
 // He proposed this simple fix which is to move the call to apply<> outside
 // namespace boost.
 namespace boost_optional_detail
 {
-  template <class T, class Factory>
+  BOOST_OPTIONAL_MODULE_EXPORT template <class T, class Factory>
   inline void construct(Factory const& factory, void* address)
   {
     factory.BOOST_NESTED_TEMPLATE apply<T>(address);

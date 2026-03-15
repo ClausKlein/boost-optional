@@ -12,14 +12,14 @@
 
 #include "boost/optional/optional.hpp"
 #include "boost/core/lightweight_test.hpp"
-#include <type_traits>
+#include <boost/config/std/type_traits.hpp>
 
 #ifndef BOOST_NO_CXX20_HDR_RANGES
-#include <ranges>
-#include <concepts>
-#include <iterator>
-#include <array>
-#include <string>
+#include <boost/config/std/ranges.hpp>
+#include <boost/config/std/concepts.hpp>
+#include <boost/config/std/iterator.hpp>
+#include <boost/config/std/array.hpp>
+#include <boost/config/std/string.hpp>
 
 static_assert(std::equality_comparable<boost::none_t>, "boost::none shall be equality comparable");
 

@@ -22,6 +22,7 @@
 
 #ifndef BOOST_OPTIONAL_USES_UNION_IMPLEMENTATION
 #ifndef BOOST_OPTIONAL_DETAIL_NO_DEFAULTED_MOVE_FUNCTIONS
+#ifndef BOOST_USE_MODULES
 
 struct PrivDefault
 {
@@ -135,15 +136,18 @@ void test_trivial_copyability()
   BOOST_TEST_TRAIT_FALSE(( boost::optional_detail::is_trivially_semiregular<boost::optional<Aggregate<Aggregate<Empty, int>, double> > > ));
 }
 
-#endif
+#endif // BOOST_USE_MODULES
 #endif // BOOST_OPTIONAL_USES_UNION_IMPLEMENTATION
+#endif
 
 int main()
 {
 #ifndef BOOST_OPTIONAL_USES_UNION_IMPLEMENTATION
 #ifndef BOOST_OPTIONAL_DETAIL_NO_DEFAULTED_MOVE_FUNCTIONS
+#ifndef BOOST_USE_MODULES
   test_type_traits();
   test_trivial_copyability();
+#endif
 #endif
 #endif
   return boost::report_errors();
