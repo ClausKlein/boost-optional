@@ -24,6 +24,7 @@
 namespace boost {
 
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template <class T>
 inline BOOST_CXX14_CONSTEXPR
 optional<BOOST_OPTIONAL_DECAY(T)> make_optional ( T && v  )
@@ -32,6 +33,7 @@ optional<BOOST_OPTIONAL_DECAY(T)> make_optional ( T && v  )
 }
 
 // Returns optional<T>(cond,v)
+BOOST_OPTIONAL_MODULE_EXPORT
 template <class T>
 inline BOOST_CXX14_CONSTEXPR
 optional<BOOST_OPTIONAL_DECAY(T)> make_optional ( bool cond, T && v )
@@ -42,6 +44,7 @@ optional<BOOST_OPTIONAL_DECAY(T)> make_optional ( bool cond, T && v )
 
 // Returns a reference to the value if this is initialized, otherwise, the behaviour is UNDEFINED.
 // No-throw
+BOOST_OPTIONAL_MODULE_EXPORT
 template <class T>
 inline BOOST_CXX14_CONSTEXPR
 BOOST_DEDUCED_TYPENAME optional<T>::reference_const_type
@@ -50,6 +53,7 @@ get ( optional<T> const& opt )
   return opt.get() ;
 }
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template <class T>
 inline BOOST_CXX14_CONSTEXPR
 BOOST_DEDUCED_TYPENAME optional<T>::reference_type
@@ -60,6 +64,7 @@ get ( optional<T>& opt )
 
 // Returns a pointer to the value if this is initialized, otherwise, returns NULL.
 // No-throw
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CXX14_CONSTEXPR
 BOOST_DEDUCED_TYPENAME optional<T>::pointer_const_type
@@ -68,6 +73,7 @@ get ( optional<T> const* opt )
   return opt->get_ptr() ;
 }
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CXX14_CONSTEXPR
 BOOST_DEDUCED_TYPENAME optional<T>::pointer_type
@@ -78,6 +84,7 @@ get ( optional<T>* opt )
 
 // Returns a reference to the value if this is initialized, otherwise, the behaviour is UNDEFINED.
 // No-throw
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CXX14_CONSTEXPR
 BOOST_DEDUCED_TYPENAME optional<T>::reference_const_type
@@ -86,6 +93,7 @@ get_optional_value_or ( optional<T> const& opt, BOOST_DEDUCED_TYPENAME optional<
   return opt.get_value_or(v) ;
 }
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CXX14_CONSTEXPR
 BOOST_DEDUCED_TYPENAME optional<T>::reference_type
@@ -96,6 +104,7 @@ get_optional_value_or ( optional<T>& opt, BOOST_DEDUCED_TYPENAME optional<T>::re
 
 // Returns a pointer to the value if this is initialized, otherwise, returns NULL.
 // No-throw
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CXX14_CONSTEXPR
 BOOST_DEDUCED_TYPENAME optional<T>::pointer_const_type
@@ -104,6 +113,7 @@ get_pointer ( optional<T> const& opt )
   return opt.get_ptr() ;
 }
 
+BOOST_OPTIONAL_MODULE_EXPORT
 template<class T>
 inline BOOST_CXX14_CONSTEXPR
 BOOST_DEDUCED_TYPENAME optional<T>::pointer_type

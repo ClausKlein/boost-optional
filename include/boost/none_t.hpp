@@ -51,6 +51,7 @@ class none_t {};
 
 #else
 
+BOOST_OPTIONAL_MODULE_EXPORT
 struct none_t
 {
   struct init_tag{};

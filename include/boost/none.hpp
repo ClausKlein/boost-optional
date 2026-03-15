@@ -59,7 +59,7 @@ namespace {
 
 #else
 
-BOOST_INLINE_CONSTEXPR none_t none ((none_t::init_tag()));
+BOOST_OPTIONAL_MODULE_EXPORT BOOST_INLINE_CONSTEXPR none_t none ((none_t::init_tag()));
 
 #endif // older definitions
 
