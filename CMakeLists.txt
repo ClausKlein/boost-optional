@@ -3,30 +3,59 @@
 # Distributed under the Boost Software License, Version 1.0.
 # https://www.boost.org/LICENSE_1_0.txt
 
-cmake_minimum_required(VERSION 3.5...3.20)
+# We support CMake 3.5, but prefer 4.3 policies and behavior
+cmake_minimum_required(VERSION 3.5...4.3)
 
 project(boost_optional VERSION "${BOOST_SUPERPROJECT_VERSION}" LANGUAGES CXX)
 
-
-if (BOOST_USE_MODULES)
+if(BOOST_USE_MODULES)
   add_library(boost_optional STATIC)
   target_sources(boost_optional PUBLIC FILE_SET CXX_MODULES BASE_DIRS modules FILES modules/boost_optional.cppm)
   set(__scope PUBLIC)
-  
+
   # Enable and propagate C++23, import std, and the modules macro
   target_compile_features(boost_optional PUBLIC cxx_std_23)
   set_target_properties(boost_optional PROPERTIES CXX_MODULE_STD 1)
   target_compile_definitions(boost_optional PUBLIC BOOST_USE_MODULES)
 
+  target_sources(
+    boost_optional
+    PUBLIC
+      FILE_SET headers_public
+        TYPE HEADERS
+        BASE_DIRS include
+        FILES
+          include/boost/none.hpp
+          include/boost/none_t.hpp
+          include/boost/optional.hpp
+          include/boost/optional/bad_optional_access.hpp
+          include/boost/optional/detail/config.hpp
+          include/boost/optional/detail/experimental_traits.hpp
+          include/boost/optional/detail/optional_aligned_storage.hpp
+          include/boost/optional/detail/optional_common_defs.hpp
+          include/boost/optional/detail/optional_config.hpp
+          include/boost/optional/detail/optional_factory_support.hpp
+          include/boost/optional/detail/optional_hash.hpp
+          include/boost/optional/detail/optional_nonmember_interface.hpp
+          include/boost/optional/detail/optional_reference_spec.hpp
+          include/boost/optional/detail/optional_relops.hpp
+          include/boost/optional/detail/optional_select_implementation.hpp
+          include/boost/optional/detail/optional_swap.hpp
+          include/boost/optional/detail/optional_trivially_copyable_base.hpp
+          include/boost/optional/detail/union_optional.hpp
+          include/boost/optional/optional.hpp
+          include/boost/optional/optional_fwd.hpp
+          include/boost/optional/optional_io.hpp
+  )
 else()
-add_library(boost_optional INTERFACE)
-  target_compile_features(boost_optional INTERFACE cxx_std_11)
-  set(__scope INTERFACE)
+  add_library(boost_optional INTERFACE)
+    target_compile_features(boost_optional INTERFACE cxx_std_11)
+    target_include_directories(boost_optional INTERFACE include)
+    set(__scope INTERFACE)
 endif()
 
 add_library(Boost::optional ALIAS boost_optional)
 
-target_include_directories(boost_optional ${__scope} include)
 if(NOT CMAKE_VERSION VERSION_LESS "3.19")
   file(GLOB_RECURSE headers include/*.hpp)
   target_sources(boost_optional PRIVATE ${headers})
