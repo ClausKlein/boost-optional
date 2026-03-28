@@ -17,7 +17,15 @@ if(BOOST_USE_MODULES)
   target_compile_features(boost_optional PUBLIC cxx_std_23)
   set_target_properties(boost_optional PROPERTIES CXX_MODULE_STD 1)
   target_compile_definitions(boost_optional PUBLIC BOOST_USE_MODULES)
+else()
+  add_library(boost_optional INTERFACE)
+    target_compile_features(boost_optional INTERFACE cxx_std_11)
+    target_include_directories(boost_optional INTERFACE include)
+    set(__scope INTERFACE)
+endif()
 
+# Note: usable starting with cmake v3.23
+if(NOT CMAKE_VERSION VERSION_LESS 3.23)
   target_sources(
     boost_optional
     PUBLIC
@@ -47,11 +55,6 @@ if(BOOST_USE_MODULES)
           include/boost/optional/optional_fwd.hpp
           include/boost/optional/optional_io.hpp
   )
-else()
-  add_library(boost_optional INTERFACE)
-    target_compile_features(boost_optional INTERFACE cxx_std_11)
-    target_include_directories(boost_optional INTERFACE include)
-    set(__scope INTERFACE)
 endif()
 
 add_library(Boost::optional ALIAS boost_optional)
